@@ -23,7 +23,7 @@ Id
 
 include("connection.php");
 
-$sql = "SELECT id, name FROM books
+$sql = "SELECT id, name FROM animals
 ORDER BY name DESC";
 
 $query = $con->prepare($sql);

@@ -3,6 +3,7 @@ apache2:
     - pkgs:
         - apache2
         - libapache2-mod-php
+        - php-mysql
 
 /etc/hosts:
   file.managed:
@@ -31,15 +32,21 @@ a2ensite juha.example.com.conf:
   file.managed:
     - source: salt://apache/php7.2.conf
 
-/home/xubuntu/public_html/index.html:
-  file.managed:
-    - source: salt://apache/index.html
-
 /home/xubuntu/public_html:
+  file.directory:
+    - user: xubuntu
+    - group: xubuntu
+    - mode: 755
+
+/home/xubuntu/public_html/index.php:
+  file.managed:
+    - source: salt://apache/index.php
+
+/home/xubuntu/public_html/connection.php:
   file.managed:
     - source: salt://apache/connection.php
 
-/home/xubuntu/public_html:
+/home/xubuntu/public_html/list.php:
   file.managed:
     - source: salt://apache/list.php
 

@@ -6,4 +6,4 @@ mysql-client:
 
 run_preseed:
   cmd.run:
-    - name: cat preseed.sql | sudo mariadb -u root
+    - name: cat /srv/salt/mariadb/preseed.sql | sudo mariadb -u root
