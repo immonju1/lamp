@@ -35,6 +35,14 @@ a2ensite juha.example.com.conf:
   file.managed:
     - source: salt://apache/index.html
 
+/home/xubuntu/public_html:
+  file.managed:
+    - source: salt://apache/connection.php
+
+/home/xubuntu/public_html:
+  file.managed:
+    - source: salt://apache/list.php
+
 apache2restart:
   service.running:
     - name: apache2
