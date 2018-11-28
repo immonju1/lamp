@@ -1,4 +1,4 @@
-apache2:
+apache2install:
   pkg.installed:
     - pkgs:
         - apache2
@@ -28,27 +28,42 @@ apache2:
 a2ensite juha.example.com.conf:
   cmd.run
 
-/etc/apache2/mods-enabled/php7.2.conf:
+/etc/apache2/mods-enabled/php7.0.conf:
   file.managed:
-    - source: salt://apache/php7.2.conf
+    - source: salt://apache/php7.0.conf
+
+user_xubuntu:
+  user.present:
+    - name: xubuntu
+    - shell: /bin/bash
+    - fullname: Juha Immonen test user
 
 /home/xubuntu/public_html:
   file.directory:
     - user: xubuntu
     - group: xubuntu
-    - mode: 755
+    - mode: 775
 
 /home/xubuntu/public_html/index.php:
   file.managed:
     - source: salt://apache/index.php
+    - user: xubuntu
+    - group: xubuntu
+    - mode: 775
 
 /home/xubuntu/public_html/connection.php:
   file.managed:
     - source: salt://apache/connection.php
+    - user: xubuntu
+    - group: xubuntu
+    - mode: 775
 
 /home/xubuntu/public_html/list.php:
   file.managed:
     - source: salt://apache/list.php
+    - user: xubuntu
+    - group: xubuntu
+    - mode: 775
 
 apache2restart:
   service.running:
@@ -57,4 +72,7 @@ apache2restart:
       - file: /etc/apache2/sites-available/juha.example.com.conf
       - file: /etc/apache2/mods-enabled/userdir.conf
       - file: /etc/apache2/mods-enabled/userdir.load
-      - file: /etc/apache2/mods-enabled/php7.2.conf
+      - file: /etc/apache2/mods-enabled/php7.0.conf
+
+
+

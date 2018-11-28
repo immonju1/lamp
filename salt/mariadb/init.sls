@@ -1,9 +1,15 @@
-mysql-client:
-  pkg.installed:
-    - pkgs:
-      - mariadb-server
-      - mariadb-client
+mariadb-server:
+  pkg.installed
+     
+mariadb-client:
+  pkg.installed
 
-run_preseed:
+/tmp/createdb.sql:
+  file.managed:
+    - mode: 600
+    - source: salt://mariadb/createdb.sql
+
+run_create:
   cmd.run:
-    - name: cat /srv/salt/mariadb/preseed.sql | sudo mariadb -u root
+    - name: cat /tmp/createdb.sql |mariadb -u root
+    - unless: "echo 'show databases'|sudo mariadb -u root|grep '^horses$'"
