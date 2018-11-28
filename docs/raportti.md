@@ -79,7 +79,7 @@ Selaimella URL:
 http://juha.example.com:8080/php/list.php
 
 Testitulos: 
-![alt text](https://github.com/immonju1/lamp/raw/master/src/common/images/tulos.png "Testin tulos")
+![Testitulos](https://github.com/immonju1/lamp/blob/master/docs/Tulos.png "Testin tulos")
 
 ### Asennus helpommaksi
 
