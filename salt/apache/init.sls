@@ -44,26 +44,12 @@ user_xubuntu:
     - group: xubuntu
     - mode: 775
 
-/home/xubuntu/public_html/index.php:
-  file.managed:
-    - source: salt://apache/index.php
+/home/xubuntu/public_html/php:
+  file.recurse:
+    - source: salt://apache/php
+    - include_empty: True
     - user: xubuntu
     - group: xubuntu
-    - mode: 775
-
-/home/xubuntu/public_html/connection.php:
-  file.managed:
-    - source: salt://apache/connection.php
-    - user: xubuntu
-    - group: xubuntu
-    - mode: 775
-
-/home/xubuntu/public_html/list.php:
-  file.managed:
-    - source: salt://apache/list.php
-    - user: xubuntu
-    - group: xubuntu
-    - mode: 775
 
 apache2restart:
   service.running:

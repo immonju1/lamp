@@ -11,5 +11,5 @@ mariadb-client:
 
 run_create:
   cmd.run:
-    - name: cat /tmp/createdb.sql |mariadb -u root
-    - unless: "echo 'show databases'|sudo mariadb -u root|grep '^horses$'"
+    - name: cat /tmp/createdb.sql | sudo mysql -u root
+    - unless: "echo 'show databases'|sudo mysql -u root|grep '^books$'"
